@@ -19,13 +19,15 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.navOptions
 import com.google.android.gms.maps.model.LatLng
+import com.pdmcourse.spotlyfe.data.model.Place
 import com.pdmcourse.spotlyfe.ui.components.SelectLocationMap
 import com.pdmcourse.spotlyfe.ui.layout.CustomBack
 import com.pdmcourse.spotlyfe.ui.navigation.SavedPlacesScreenNavigation
 
 @Composable
 fun NewPlaceScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: NewPlaceViewModel
 ) {
     var placeName by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
@@ -66,6 +68,14 @@ fun NewPlaceScreen(
                     }
                 )
                 Button(onClick = {
+                    val place = Place(
+                        name = placeName,
+                        latitude = position.latitude,
+                        longitude = position.longitude,
+                        remark = ""
+                    )
+                    viewModel.insertPlace(place)
+                    // Optionally navigate back or show a message
                 }) {
                     Text("Save Place")
                 }

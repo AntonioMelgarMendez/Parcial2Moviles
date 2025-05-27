@@ -4,7 +4,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.pdmcourse.spotlyfe.data.model.Place
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PlaceDao {
@@ -12,7 +12,7 @@ interface PlaceDao {
     suspend fun insertPlace(place: PlaceEntity)
 
     @Query("SELECT * FROM places")
-    suspend fun getAllPlaces(): List<PlaceEntity>
+    fun getAllPlaces(): Flow<List<PlaceEntity>>
 
     @Update
     suspend fun updatePlace(place: PlaceEntity)

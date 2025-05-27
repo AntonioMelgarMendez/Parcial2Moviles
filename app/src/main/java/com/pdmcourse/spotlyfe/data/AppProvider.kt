@@ -1,9 +1,9 @@
 package com.pdmcourse.spotlyfe.data
 
 import android.content.Context
-import com.pdmcourse.spotlyfe.data.database.AppDatabase
+import com.pdmcourse.spotlyfe.data.database.PlaceRepository
+import com.pdmcourse.spotlyfe.data.database.PlaceRepositoryImpl
 
 class AppProvider(context: Context) {
-  private val appDatabase = AppDatabase.getDatabase(context)
-    val placeDao = appDatabase.placeDao()
+  val placeRepository: PlaceRepository = PlaceRepositoryImpl(context)
 }
