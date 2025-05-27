@@ -5,8 +5,5 @@ import com.pdmcourse.spotlyfe.data.database.AppDatabase
 
 class AppProvider(context: Context) {
   private val appDatabase = AppDatabase.getDatabase(context)
-
-//  fun providePlaceRepository() : PlaceRepository {
-//
-//  }
+    val placeDao = appDatabase.placeDao()
 }
